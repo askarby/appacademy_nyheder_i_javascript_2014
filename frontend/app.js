@@ -30,4 +30,10 @@
         this.add('Technologies to use:\n- NodeJS\n- JavaScript\n- AngularJS');
         this.add('I couldn\'t come up with anything interesting to type');
     });
+    
+    app.filter('nl2br', function () {
+        return function (text) {
+            return text && text.replace(/\n/g, '<br>');
+        };
+    });
 }(angular));

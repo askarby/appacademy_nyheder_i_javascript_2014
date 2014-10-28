@@ -30,15 +30,15 @@
         <a class="btn"><span class="btn-icon icon-ok"></span>Save note</a>
         
         <!-- Details -->
-        <section class="details">
+        <section class="details" ng-show="selected">
             <h3 class="heading">Author</h3>
             <div>{{selected.author}}</div>
             
             <h3 class="heading">Created</h3>
-            <div>{{selected.created}}</div>
+            <div>{{selected.created | date : 'short'}}</div>
 
             <h3 class="heading">Text</h3>
-            <div>{{selected.contents}}</div>
+            <div>{{selected.contents | nl2br}}</div>
         </section>
     </div>
     
