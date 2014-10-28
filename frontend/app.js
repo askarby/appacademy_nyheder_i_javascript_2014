@@ -6,7 +6,7 @@
     var app = angular.module('postit', ['ngSanitize']),
         template = { id: undefined, author: 'Anonymous', contents: '' };
     
-    app.controller('ListCtrl', function ($scope) {
+    app.controller('ListCtrl', function ($scope, Backend) {
         $scope.selected = undefined;
         $scope.notes = [];
         
@@ -31,17 +31,20 @@
             }
         };
         
-        this.add('Sample note containing important information...');
-        this.add('Some didn\'t believe that notes could be awesome');
-        this.add('More than awesome...');
-        this.add('Buy milk, and bread');
-        this.add('Technologies to use:\n- NodeJS\n- JavaScript\n- AngularJS');
-        this.add('I couldn\'t come up with anything interesting to type');
+        Backend.list().then(function (response) {
+            $scope.notes = response.data;
+        });
     });
     
     app.filter('nl2br', function () {
         return function (text) {
             return text && text.replace(/\n/g, '<br>');
+        };
+    });
+    
+    app.service('Backend', function ($http) {
+        this.list = function () {
+            return $http.get('/rest/notes');
         };
     });
 }(angular));

@@ -17,7 +17,11 @@
 
 <body ng-app="postit" ng-controller="ListCtrl as list">
     <div class="container">
-        <div class="rotate" ng-repeat="note in notes">
+        <div class="filter">
+            <input type="text" ng-model="restrict" placeholder="Enter filter text here...">
+        </div>
+        
+        <div class="rotate" ng-repeat="note in notes | filter : restrict">
             <div class="postit" ng-click="list.select(note)">
                 <a class="btn" ng-click="list.remove(note)"><span class="btn-icon icon-remove"></span></a>
                 <textarea ng-model="note.contents">{{note.contents}}</textarea>
