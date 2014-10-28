@@ -23,6 +23,14 @@
             $scope.notes.push(note);
         };
         
+        this.remove = function removeNote(note) {
+            var idx = $scope.notes.indexOf(note);
+            if (idx > -1) {
+                $scope.selected = undefined;
+                $scope.notes.splice(idx, 1);
+            }
+        };
+        
         this.add('Sample note containing important information...');
         this.add('Some didn\'t believe that notes could be awesome');
         this.add('More than awesome...');

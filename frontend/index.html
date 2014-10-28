@@ -19,14 +19,14 @@
     <div class="container">
         <div class="rotate" ng-repeat="note in notes">
             <div class="postit" ng-click="list.select(note)">
-                <a class="btn"><span class="btn-icon icon-remove"></span></a>
+                <a class="btn" ng-click="list.remove(note)"><span class="btn-icon icon-remove"></span></a>
                 <textarea ng-model="note.contents">{{note.contents}}</textarea>
             </div>
         </div>
     </div>
     
     <div class="sidebar">
-        <a class="btn"><span class="btn-icon icon-add"></span>Add note</a>
+        <a class="btn" ng-click="list.add()"><span class="btn-icon icon-add"></span>Add note</a>
         <a class="btn"><span class="btn-icon icon-ok"></span>Save note</a>
         
         <!-- Details -->
