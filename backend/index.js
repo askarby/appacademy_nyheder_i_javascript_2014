@@ -102,7 +102,7 @@ app.delete('/rest/note/:id', function (req, res) {
 });
 
 // Serve static frontend files
-app.use('/', express.static(__dirname + '/../frontend'));
+app.use('/', express.static(__dirname + '/../frontend/dist'));
 
 var server = app.listen(1337, function () {
     console.log('Post-it Note app listening at http:/127.0.0.1:1337/');
