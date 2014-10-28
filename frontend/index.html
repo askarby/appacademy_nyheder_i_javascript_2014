@@ -31,7 +31,12 @@
     
     <div class="sidebar">
         <a class="btn" ng-click="list.add()"><span class="btn-icon icon-add"></span>Add note</a>
-        <a class="btn"><span class="btn-icon icon-ok"></span>Save note</a>
+        <a ng-show="selected" class="btn" ng-click="list.save(selected)"><span class="btn-icon icon-ok"></span>Save note</a>
+        
+        <!-- Instructions -->
+        <section class="details" ng-hide="selected">
+            Click upon a note to display details about it...
+        </section>
         
         <!-- Details -->
         <section class="details" ng-show="selected">

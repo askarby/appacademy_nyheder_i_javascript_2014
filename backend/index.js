@@ -42,6 +42,65 @@ app.get('/rest/notes', function (req, res) {
     });
 });
 
+// Create a new note
+app.post('/rest/note', function (req, res) {
+    var stmt = db.prepare('INSERT INTO notes (created, author, contents) VALUES (?, ?, ?);'),
+        // Vales to insert
+        created = new Date().toISOString(),
+        author = 'Anonymous',
+        contents = req.body.contents;
+    
+    // Execute statement
+    stmt.run(created, author, contents, function (err) {
+        var id = this.lastID;
+        if (err) {
+            res.status(500).json({
+                message: 'Unable to create a note',
+                cause: err
+            });
+        } else {
+            res.json({
+                id: id,
+                created: created,
+                author: author,
+                contents: contents
+            });
+        }
+    });
+    stmt.finalize();
+});
+
+// Update note identified by id
+app.put('/rest/note/:id', function (req, res) {
+    var stmt = db.prepare('UPDATE notes SET contents = ? WHERE id = ?;'),
+        // Vales to update
+        id = req.params.id,
+        contents = req.body.contents;
+    
+    // Execute statement
+    stmt.run(req.body.contents, req.params.id, function (err) {
+        if (err) {
+            res.status(500).json({
+                message: 'Unable to update a note',
+                cause: err
+            });
+        } else {
+            res.status(200);
+        }
+    });
+    stmt.finalize();
+});
+
+// Delete note identified by id
+app.delete('/rest/note/:id', function (req, res) {
+    // Execute statement
+    var stmt = db.prepare('DELETE FROM notes WHERE id = ?;');
+    stmt.run(req.params.id);
+    stmt.finalize(function onFinalized() {
+        res.status(200);
+    });
+});
+
 // Serve static frontend files
 app.use('/', express.static(__dirname + '/../frontend'));
 
