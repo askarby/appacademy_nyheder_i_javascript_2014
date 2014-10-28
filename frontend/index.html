@@ -15,12 +15,12 @@
     <link rel="stylesheet" type="text/css" href="./styling.css">
 </head>
 
-<body>
+<body ng-app="postit" ng-controller="ListCtrl as list">
     <div class="container">
-        <div class="rotate">
+        <div class="rotate" ng-repeat="note in notes">
             <div class="postit">
                 <a class="btn"><span class="btn-icon icon-remove"></span></a>
-                <textarea>Sample contents of post-it note</textarea>
+                <textarea ng-model="note.contents">{{note.contents}}</textarea>
             </div>
         </div>
     </div>
@@ -41,6 +41,10 @@
             <div>-</div>
         </section>
     </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    
+    <script src="app.js"></script>
 </body>
 
 </html>
