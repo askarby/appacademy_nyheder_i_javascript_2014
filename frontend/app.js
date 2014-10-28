@@ -3,7 +3,7 @@
 (function (angular) {
     'use strict';
 
-    var app = angular.module('postit', []),
+    var app = angular.module('postit', ['ngSanitize']),
         template = { id: undefined, author: 'Anonymous', contents: '' };
     
     app.controller('ListCtrl', function ($scope) {
