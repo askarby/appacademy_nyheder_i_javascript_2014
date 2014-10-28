@@ -7,7 +7,12 @@
         template = { id: undefined, author: 'Anonymous', contents: '' };
     
     app.controller('ListCtrl', function ($scope) {
+        $scope.selected = undefined;
         $scope.notes = [];
+        
+        this.select = function selectNote(note) {
+            $scope.selected = note;
+        };
         
         this.add = function addNote(text) {
             var note = angular.copy(template);
