@@ -6,8 +6,8 @@ Præsentation tilhørende dette eksempelkode kan forefindes [her](https://github
 
 Navigation
 ----------
-I kodebasen er indlagt tags, som der kan laves "checkout" på vha. kommandoen: ``git checkout &lt;tag-navn&gt;``
-(hvor ``&lt;tag-navn&gt;`` naturligvis skal erstattes med det egentlige tagnavn. En fuldstændig liste af tags findes nedenfor:
+I kodebasen er indlagt tags, som der kan laves "checkout" på vha. kommandoen: ``git checkout <tag-navn>``
+(hvor ``<tag-navn>`` naturligvis skal erstattes med det egentlige tagnavn. En fuldstændig liste af tags findes nedenfor:
  
 <table>
   <thead>
