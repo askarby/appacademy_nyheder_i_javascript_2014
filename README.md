@@ -55,7 +55,7 @@ I kodebasen er indlagt tags, som der kan laves "checkout" på vha. kommandoen: `
     </tr>
     <tr>
       <td>v10</td>
-      <td></td>
+      <td>"Bygge" frontend vha. gulp / gulp-usemin</td>
     </tr>
   </tbody>
 </table>
